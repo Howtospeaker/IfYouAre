@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--指定properties文件的位置，从类路径根开始找文件-->
+<!--    <properties resource="jdbc.properties"/>-->
+<!--    <settings>-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+<!--    </settings>-->
+
+    <!--设置别名-->
+    <typeAliases>
+        <!--name:实体类所在的包名(不是实体类的包名也可以)-->
+        <package name="com.ifyouare.settings.entity"/>
+    </typeAliases>
+    <mappers>
+        <!--<mapper resource="com/xijian/dao/StudentDao.xml"/>-->
+        <!--1.mapper文件和dao接口名必须一样-->
+        <!--2.mapper文件和dao接口必须在同一目录下-->
+        <package name="com.ifyouare.settings.dao"/>
+    </mappers>
+</configuration>
