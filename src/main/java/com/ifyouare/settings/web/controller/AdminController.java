@@ -1,15 +1,20 @@
 package com.ifyouare.settings.web.controller;
 
 import com.ifyouare.settings.entity.Admin;
+import com.ifyouare.settings.entity.User;
 import com.ifyouare.settings.service.AdminService;
+import com.ifyouare.settings.service.UserService;
 import com.ifyouare.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -17,8 +22,10 @@ import java.util.Map;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private UserService userService;
 
-
+    //管理员登录
     @RequestMapping("/login.do")
     @ResponseBody
     private Map<String,Object> login(String loginAct, String loginPwd, HttpServletRequest request){
@@ -63,4 +70,61 @@ public class AdminController {
             return map;
         }
     }
+
+    //添加用户
+    @RequestMapping("/addUser.do")
+    public ModelAndView addUser(User user){
+        ModelAndView mv = new ModelAndView();
+        String tips = "添加失败";
+        user.setLoginPwd(MD5Util.getMD5(user.getLoginPwd()));
+        int flag = userService.register(user);
+        if (flag ==1){
+            tips = "添加成功";
+        }
+        mv.addObject("msg",tips);
+        mv.setViewName("result");
+        return mv;
+    }
+    /*
+    //删除用户
+    @RequestMapping("/deleteUser.do")
+    public ModelAndView deleteUser(Integer id){
+        ModelAndView mv = new ModelAndView();
+        String tips = "删除失败";
+        int flag = userService.deleteUser(id);
+        if (flag ==1){
+            tips = "删除成功";
+        }
+        mv.addObject("msg",tips);
+        mv.setViewName("result");
+        return mv;
+    }
+
+    //更新用户信息
+    @RequestMapping("/updateUser.do")
+    @ResponseBody
+    public Map<String,Object> updateUser(User user,HttpServletRequest request){
+        Map<String,Object> map = new HashMap<>();
+        try {
+            user = userService.updateUser(user);
+            request.getSession().setAttribute("user",user);
+            map.put("success",true);
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+            String msg = e.getMessage();
+            map.put("success",false);
+            map.put("msg",msg);
+            return map;
+        }
+    }
+    */
+
+    //查询用户信息
+    @RequestMapping("selectAllUser.do")
+    @ResponseBody
+    public List<User> selectAllUser(){
+        return adminService.selectAllUser();
+    }
+
 }

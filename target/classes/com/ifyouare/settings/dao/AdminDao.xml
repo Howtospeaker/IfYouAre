@@ -6,4 +6,7 @@
     <select id="login" resultType="Admin">
         select * from administrators where loginAct=#{loginAct} and loginPwd=#{loginPwd}
     </select>
+    <select id="selectAllUser" resultType="User">
+        select * from user
+    </select>
 </mapper>
