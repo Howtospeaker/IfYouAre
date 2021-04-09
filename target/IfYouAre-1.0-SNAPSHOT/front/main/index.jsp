@@ -4,6 +4,7 @@
     <title>相亲网首页</title>
 </head>
 <body>
-欢迎来到相亲网首页
+欢迎${user.name}来到相亲网首页
+接下来请回答一些问题
 </body>
 </html>

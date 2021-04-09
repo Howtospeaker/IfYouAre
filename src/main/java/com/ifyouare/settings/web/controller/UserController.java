@@ -68,7 +68,8 @@ public class UserController {
             map.put("msg",msg);
             return map;
         }
-    }//用户注册
+    }
+    //用户注册
     @RequestMapping("/register.do")
     public ModelAndView userInsert(User user){
         ModelAndView mv = new ModelAndView();

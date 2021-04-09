@@ -29,4 +29,9 @@ public class MD5Util {
 			return "";
 		}
 	}
+
+	public static void main(String[] args) {
+		System.out.println("202cb962ac59075b964b07152d234b70");
+		System.out.println(getMD5("123"));
+	}
 }

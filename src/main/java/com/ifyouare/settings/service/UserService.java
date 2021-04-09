@@ -4,6 +4,6 @@ import com.ifyouare.exception.LoginException;
 import com.ifyouare.settings.entity.User;
 
 public interface UserService {
-    User login(String loginAct, String loginPwd) throws LoginException;
+    User login(String loginId, String loginPwd) throws LoginException;
     int register(User user);
 }
