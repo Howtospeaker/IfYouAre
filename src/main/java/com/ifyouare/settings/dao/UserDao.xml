@@ -10,4 +10,9 @@
         insert into user(name,sex,age,email,phone,nickName,loginId,loginPwd,point,school,major)
         values (#{name},#{sex},#{age},#{email},#{phone},#{nickName},#{loginId},#{loginPwd},0,#{school},#{major})
     </insert>
+    <update id="updateUser">
+        update user set name=#{name},sex=#{sex},age=#{age},email=#{email},phone=#{phone},nickName=#{nickName},
+                        loginId=#{loginId},loginPwd=#{loginPwd},point=#{point},school=#{school},major=#{major}
+        where id = #{id}
+    </update>
 </mapper>

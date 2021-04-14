@@ -8,4 +8,6 @@ public interface UserDao {
     User login(Map<String, String> map);
 
     int addUser(User user);
+
+    int updateUser(User user);
 }

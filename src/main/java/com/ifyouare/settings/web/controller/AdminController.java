@@ -7,11 +7,15 @@ import com.ifyouare.settings.service.UserService;
 import com.ifyouare.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -85,13 +89,13 @@ public class AdminController {
         mv.setViewName("result");
         return mv;
     }
-    /*
+
     //删除用户
-    @RequestMapping("/deleteUser.do")
+    @RequestMapping("/deleteById.do")
     public ModelAndView deleteUser(Integer id){
         ModelAndView mv = new ModelAndView();
         String tips = "删除失败";
-        int flag = userService.deleteUser(id);
+        int flag = adminService.deleteUser(id);
         if (flag ==1){
             tips = "删除成功";
         }
@@ -103,28 +107,31 @@ public class AdminController {
     //更新用户信息
     @RequestMapping("/updateUser.do")
     @ResponseBody
-    public Map<String,Object> updateUser(User user,HttpServletRequest request){
-        Map<String,Object> map = new HashMap<>();
-        try {
-            user = userService.updateUser(user);
-            request.getSession().setAttribute("user",user);
-            map.put("success",true);
-            return map;
-        } catch (Exception e) {
-            e.printStackTrace();
-            String msg = e.getMessage();
-            map.put("success",false);
-            map.put("msg",msg);
-            return map;
-        }
+    public ModelAndView updateUser(User user){
+        ModelAndView mv = new ModelAndView();
+        String tips = "修改失败";
+        user.setLoginPwd(MD5Util.getMD5(user.getLoginPwd()));
+        if (userService.updateUser(user)==1)
+            tips = "修改成功";
+        mv.addObject("msg",tips);
+        mv.setViewName("../behind/main/opertation/selectById");
+        return mv;
     }
-    */
 
-    //查询用户信息
-    @RequestMapping("selectAllUser.do")
+    //查询单个用户信息，并可以修改
+    @RequestMapping(value = "/findById.do")
+    @ResponseBody
+    public ModelAndView selectById(Integer id){
+        ModelAndView mv = new ModelAndView();
+        User user = adminService.selectById(id);
+        mv.addObject("user",user);
+        mv.setViewName("../behind/main/opertation/selectById");
+        return mv;
+    }
+    //查询所有用户信息
+    @RequestMapping("/selectAllUser.do")
     @ResponseBody
     public List<User> selectAllUser(){
         return adminService.selectAllUser();
     }
-
 }

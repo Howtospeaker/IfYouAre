@@ -10,4 +10,8 @@ public interface AdminDao {
     Admin login(Map<String, String> map);
 
     List<User> selectAllUser();
+
+    int deleteById(Integer id);
+
+    User selectById(Integer id);
 }

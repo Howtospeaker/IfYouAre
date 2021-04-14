@@ -10,4 +10,8 @@ public interface AdminService {
     Admin login(String loginAct, String loginPwd,String ip) throws LoginException;
 
     List<User> selectAllUser();
+
+    int deleteUser(Integer id);
+
+    User selectById(Integer id);
 }

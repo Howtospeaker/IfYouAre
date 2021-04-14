@@ -6,4 +6,6 @@ import com.ifyouare.settings.entity.User;
 public interface UserService {
     User login(String loginId, String loginPwd) throws LoginException;
     int register(User user);
+
+    int updateUser(User user);
 }

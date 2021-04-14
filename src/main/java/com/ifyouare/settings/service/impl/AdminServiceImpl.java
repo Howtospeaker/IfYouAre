@@ -52,8 +52,18 @@ public class AdminServiceImpl implements AdminService {
     public List<User> selectAllUser() {
         return adminDao.selectAllUser();
     }
-    //用户删除
 
+    //用户删除
+    @Override
+    public int deleteUser(Integer id) {
+        return adminDao.deleteById(id);
+    }
+
+    //查询单个用户
+    @Override
+    public User selectById(Integer id) {
+        return adminDao.selectById(id);
+    }
     //用户更新
 
 
