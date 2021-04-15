@@ -8,5 +8,11 @@ import java.util.List;
 public interface QuestionService {
     int addQuestion(Question question);
 
-    List<User> selectAllQuestion();
+    List<Question> selectAllQuestion();
+
+    int deleteQuestion(Integer questionId);
+
+    Question selectById(Integer questionId);
+
+    int updateQuestion(Question question);
 }

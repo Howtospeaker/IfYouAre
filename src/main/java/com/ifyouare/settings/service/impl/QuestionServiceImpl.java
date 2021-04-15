@@ -20,7 +20,22 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public List<User> selectAllQuestion() {
+    public List<Question> selectAllQuestion() {
         return questionDao.selectAllQuestion();
+    }
+
+    @Override
+    public int deleteQuestion(Integer questionId) {
+        return questionDao.deleteById(questionId);
+    }
+
+    @Override
+    public Question selectById(Integer questionId) {
+        return questionDao.selectById(questionId);
+    }
+
+    @Override
+    public int updateQuestion(Question question) {
+        return questionDao.updateQuestion(question);
     }
 }

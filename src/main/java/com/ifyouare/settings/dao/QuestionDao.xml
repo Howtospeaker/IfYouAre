@@ -10,4 +10,14 @@
     <select id="selectAllQuestion" resultType="Question">
         select * from question
     </select>
+    <delete id="deleteById">
+        delete from question where questionId = #{questionId}
+    </delete>
+    <select id="selectById" resultType="Question">
+        select * from question where questionId = #{questionId}
+    </select>
+    <update id="updateQuestion">
+        update question set detail=#{detail},sexType=#{sexType},ansA=#{ansA},ansB=#{ansB},ansC=#{ansC},ansD=#{ansD}
+        where questionId = #{questionId}
+    </update>
 </mapper>

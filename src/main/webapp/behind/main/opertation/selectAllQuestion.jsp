@@ -40,8 +40,8 @@
                             .append("<td>"+n.ansB+"</td>")
                             .append("<td>"+n.ansC+"</td>")
                             .append("<td>"+n.ansD+"</td>")
-                            .append("<td><a href='question/findById.do?id="+n.id+"'>修改信息</a></td>")
-                            .append("<td><a href='question/deleteById.do?id="+n.id+"'>删除</a></td>")
+                            .append("<td><a href='question/findById.do?questionId="+n.questionId+"'>修改信息</a></td>")
+                            .append("<td><a href='question/deleteById.do?questionId="+n.questionId+"'>删除</a></td>")
                             // .html("<td><a href='user/findById?id=n.id'>详细信息</a></td>")
                             .append("</tr>")
                     })
@@ -51,6 +51,7 @@
     </script>
 </head>
 <body>
+<center>
 <table border="2">
     <thead>
     <tr>
@@ -70,5 +71,6 @@
     <input type="button" id="btnLoader" value="刷新"/>
     </tbody>
 </table>
+</center>
 </body>
 </html>

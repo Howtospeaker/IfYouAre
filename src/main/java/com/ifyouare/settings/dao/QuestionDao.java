@@ -8,5 +8,11 @@ import java.util.List;
 public interface QuestionDao {
     int addQuestion(Question question);
 
-    List<User> selectAllQuestion();
+    List<Question> selectAllQuestion();
+
+    int deleteById(Integer id);
+
+    Question selectById(Integer questionId);
+
+    int updateQuestion(Question question);
 }
