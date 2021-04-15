@@ -15,4 +15,21 @@
                         loginId=#{loginId},loginPwd=#{loginPwd},point=#{point},school=#{school},major=#{major}
         where id = #{id}
     </update>
+    <select id="selectBySimple" resultType="User">
+/*select * from user where sex=0 and age between 18 and 100 and point between 20 and 100;*/
+        select * from user where sex=#{sex} and age &gt;= #{minage} and age &lt;= #{maxage} and point &gt;= #{minpoint} and point &lt;= #{maxpoint}
+    </select>
+    <select id="selectBoyNum" resultType="int">
+        select count(sex) from user where sex=0
+    </select>
+    <select id="selectGirlNum" resultType="int">
+        select count(sex) from user where sex=1
+    </select>
+    <select id="selectAgeNum" resultType="map">
+        select
+                (select count(0) from user where age between 0 and 20) as 'ageZtoT' ,
+                (select count(0) from user where age between 21 and 40) as 'ageTtoF' ,
+                (select count(0) from user where age between 41 and 60) as 'ageFtoX' ,
+                (select count(0) from user where age between 61 and 80) as 'ageStoE'
+    </select>
 </mapper>

@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static UserDao userDao1;
     @Autowired
     private UserDao userDao;
     public void setUserDao(UserDao userDao) {
@@ -57,5 +59,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateUser(User user) {
         return userDao.updateUser(user);
+    }
+
+    @Override
+    public List<User> selectBySimple(Integer sex, Integer minage, Integer maxage, Integer minpoint, Integer maxpoint) {
+        return userDao.selectBySimple(sex,minage,maxage,minpoint,maxpoint);
+    }
+
+    @Override
+    public int boyNum() {
+        return userDao.selectBoyNum();
+    }
+
+    @Override
+    public int girlNum() {
+        return userDao.selectGirlNum();
+    }
+
+    @Override
+    public Map<String, Object> ageNum() {
+        return userDao.selectAgeNum();
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ifyouare.settings.dao.QuestionDao">
+    <insert id="addQuestion">
+        insert into question(questionId,detail,sexType,ansA,ansB,ansC,ansD)
+        values (#{questionId},#{detail},#{sexType},#{ansA},#{ansB},#{ansC},#{ansD})
+    </insert>
+    <select id="selectAllQuestion" resultType="Question">
+        select * from question
+    </select>
+</mapper>

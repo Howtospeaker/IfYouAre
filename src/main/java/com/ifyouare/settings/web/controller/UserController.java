@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -84,4 +85,27 @@ public class UserController {
         return mv;
     }
 
+    //简单查询
+    @RequestMapping("/findBySimple.do")
+    @ResponseBody
+    public List<User> findBySimple(Integer sex,Integer minage,Integer maxage,Integer minpoint,Integer maxpoint){
+        return userService.selectBySimple(sex,minage,maxage,minpoint,maxpoint);
+    }
+
+    //男女数量图表
+    @RequestMapping("/sexNum.do")
+    @ResponseBody
+    public Map<String,Integer> sexNum(){
+        Map<String,Integer> map = new HashMap<>();
+        map.put("boy",userService.boyNum());
+        map.put("girl",userService.girlNum());
+        return map;
+    }
+
+
+    @RequestMapping("/ageNum.do")
+    @ResponseBody
+    public Map<String,Object> ageNum(){
+        return userService.ageNum();
+    }
 }

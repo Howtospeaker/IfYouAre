@@ -26,7 +26,10 @@
         <b>菜单</b><br>
         <p><a href="behind/main/opertation/selectAllUser.jsp" target="iframe_a">用户查询</a></p><br>
         <p><a href="behind/main/opertation/addUser.jsp" target="iframe_a">添加用户</a></p><br>
-
+        <p><a href="behind/main/opertation/simpleQuery.jsp" target="iframe_a">简单查询</a></p><br>
+        <p><a href="behind/main/opertation/charts.jsp" target="iframe_a">图表视图</a></p><br>
+        <p><a href="behind/main/opertation/selectAllQuestion.jsp" target="iframe_a">问题查询</a></p><br>
+        <p><a href="behind/main/opertation/addQuestion.jsp" target="iframe_a">添加问题</a></p><br>
     </div>
 
     <div id="content" style="background-color:#EEEEEE;height:100%;width:80%;float:left;">
